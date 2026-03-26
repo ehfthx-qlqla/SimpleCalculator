@@ -196,45 +196,59 @@ namespace SimpleCalculator
                 secondOperand = int.Parse(story2.Text);
                 int result = 0;
 
-                // 선택된 연산자에 따라 계산 수행
                 switch (currentOperator)
                 {
                     case "+": result = firstOperand + secondOperand; break;
                     case "-": result = firstOperand - secondOperand; break;
                     case "*": result = firstOperand * secondOperand; break;
                     case "/":
-                        // 나눗셈 0 나누기 방지
                         if (secondOperand != 0) result = firstOperand / secondOperand;
                         else { MessageBox.Show("0으로 나눌 수 없습니다."); return; }
                         break;
                 }
 
-                // 결과 출력
-                story1.Text += " = " + result.ToString();
+                // 결과 출력 시에도 화면용 기호를 선택
+                string displayOp = currentOperator;
+                if (currentOperator == "*") displayOp = "×";
+                else if (currentOperator == "/") displayOp = "÷";
+
+                // 상단(story1)에 전체 식 완성 (예: 5 × 2 = 10)
+                story1.Text = firstOperand.ToString() + " " + displayOp + " " + secondOperand.ToString() + " = " + result.ToString();
+
+                // 하단(story2)에 최종 결과값
                 story2.Text = result.ToString();
 
-                // 계산이 끝났으므로 연산자 초기화
                 currentOperator = "";
             }
         }
         private void btC_Click(object sender, EventArgs e)
         {
-            story1.Clear();
-            story2.Clear();
-            firstOperand = 0;
-            secondOperand = 0;
-            isOperatorClicked = false;
+            story1.Clear();           // 상단 기록 삭제
+            story2.Clear();           // 하단 입력 삭제
+            firstOperand = 0;         // 첫 번째 숫자 초기화
+            secondOperand = 0;        // 두 번째 숫자 초기화
+            currentOperator = "";     // 연산자 초기화
+            isOperatorClicked = false; // 플래그 초기화
         }
         // 초기화 버튼 (btC 또는 btCE) 클릭 시
         private void btCE_Click(object sender, EventArgs e)
         {
-            story1.Clear();
-            story2.Clear();
-            firstOperand = 0;
-            secondOperand = 0;
-            isOperatorClicked = false;
+            // 현재 입력창(story2)에 글자가 있다면
+            if (story2.Text.Length > 0)
+            {
+                // 상단 기록(story1)에서도 story2의 길이만큼 뒤에서부터 지워줍니다.
+                int lengthToRemove = story2.Text.Length;
+                if (story1.Text.Length >= lengthToRemove)
+                {
+                    story1.Text = story1.Text.Substring(0, story1.Text.Length - lengthToRemove);
+                }
+
+                // 현재 입력창을 비웁니다.
+                story2.Clear();
+            }
         }
-        //과제2 시작
+
+        //과제2 시작!!!!!!!!!!!!!!!!!!!!
         private void btn_Click(object sender, EventArgs e)
         {
             SetOperator("-");
@@ -255,11 +269,34 @@ namespace SimpleCalculator
             if (!string.IsNullOrEmpty(story2.Text))
             {
                 firstOperand = int.Parse(story2.Text);
-                currentOperator = op;
+                currentOperator = op; // 내부 계산용은 그대로 (*, /)
                 isOperatorClicked = true;
 
-                // 상단 입력창에 현재 숫자와 연산자 표시 (예: 10 * )
-                story1.Text = firstOperand.ToString() + " " + op + " ";
+                // 화면 표시용 기호 결정
+                string displayOp = op;
+                if (op == "*") displayOp = "×";
+                else if (op == "/") displayOp = "÷";
+
+                // 상단 입력창(story1)에는 예쁜 기호로 표시
+                story1.Text = firstOperand.ToString() + " " + displayOp + " ";
+            }
+        }
+
+
+        //과제3 시작!!!!!!!!!!!!!!!!!!!!!!!!!!
+        private void btdel_Click(object sender, EventArgs e)
+        {
+            // story2에 지울 글자가 있을 때만 실행
+            if (story2.Text.Length > 0)
+            {
+                // 1. 하단 입력창(story2)의 마지막 글자 제거
+                story2.Text = story2.Text.Substring(0, story2.Text.Length - 1);
+
+                // 2. 상단 입력창(story1)의 마지막 글자도 같이 제거
+                if (story1.Text.Length > 0)
+                {
+                    story1.Text = story1.Text.Substring(0, story1.Text.Length - 1);
+                }
             }
         }
     }

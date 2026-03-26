@@ -100,6 +100,7 @@
             btdel.TabIndex = 4;
             btdel.Text = "del";
             btdel.UseVisualStyleBackColor = true;
+            btdel.Click += btdel_Click;
             // 
             // btC
             // 
