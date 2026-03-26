@@ -122,6 +122,7 @@
             btdv.TabIndex = 6;
             btdv.Text = "÷";
             btdv.UseVisualStyleBackColor = true;
+            btdv.Click += btdv_Click;
             // 
             // btt
             // 
@@ -133,6 +134,7 @@
             btt.TabIndex = 10;
             btt.Text = "×";
             btt.UseVisualStyleBackColor = true;
+            btt.Click += btt_Click;
             // 
             // bt8
             // 
@@ -180,6 +182,7 @@
             btn.TabIndex = 14;
             btn.Text = "-";
             btn.UseVisualStyleBackColor = true;
+            btn.Click += btn_Click;
             // 
             // bt5
             // 
