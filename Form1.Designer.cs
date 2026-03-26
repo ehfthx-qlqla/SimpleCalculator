@@ -89,6 +89,7 @@
             btCE.TabIndex = 3;
             btCE.Text = "CE";
             btCE.UseVisualStyleBackColor = true;
+            btCE.Click += btCE_Click;
             // 
             // btdel
             // 
@@ -109,6 +110,7 @@
             btC.TabIndex = 5;
             btC.Text = "C";
             btC.UseVisualStyleBackColor = true;
+            btC.Click += btC_Click;
             // 
             // btdv
             // 
@@ -142,6 +144,7 @@
             bt8.TabIndex = 9;
             bt8.Text = "8";
             bt8.UseVisualStyleBackColor = true;
+            bt8.Click += bt8_Click;
             // 
             // bt9
             // 
@@ -153,6 +156,7 @@
             bt9.TabIndex = 8;
             bt9.Text = "9";
             bt9.UseVisualStyleBackColor = true;
+            bt9.Click += bt9_Click;
             // 
             // bt7
             // 
@@ -164,6 +168,7 @@
             bt7.TabIndex = 7;
             bt7.Text = "7";
             bt7.UseVisualStyleBackColor = true;
+            bt7.Click += bt7_Click;
             // 
             // btn
             // 
@@ -186,6 +191,7 @@
             bt5.TabIndex = 13;
             bt5.Text = "5";
             bt5.UseVisualStyleBackColor = true;
+            bt5.Click += bt5_Click;
             // 
             // bt6
             // 
@@ -197,6 +203,7 @@
             bt6.TabIndex = 12;
             bt6.Text = "6";
             bt6.UseVisualStyleBackColor = true;
+            bt6.Click += bt6_Click;
             // 
             // bt4
             // 
@@ -208,6 +215,7 @@
             bt4.TabIndex = 11;
             bt4.Text = "4";
             bt4.UseVisualStyleBackColor = true;
+            bt4.Click += bt4_Click;
             // 
             // btp
             // 
@@ -219,6 +227,7 @@
             btp.TabIndex = 18;
             btp.Text = "+";
             btp.UseVisualStyleBackColor = true;
+            btp.Click += btp_Click;
             // 
             // bt2
             // 
@@ -230,6 +239,7 @@
             bt2.TabIndex = 17;
             bt2.Text = "2";
             bt2.UseVisualStyleBackColor = true;
+            bt2.Click += bt2_Click;
             // 
             // bt3
             // 
@@ -241,6 +251,7 @@
             bt3.TabIndex = 16;
             bt3.Text = "3";
             bt3.UseVisualStyleBackColor = true;
+            bt3.Click += bt3_Click;
             // 
             // bt1
             // 
@@ -252,6 +263,7 @@
             bt1.TabIndex = 15;
             bt1.Text = "1";
             bt1.UseVisualStyleBackColor = true;
+            bt1.Click += bt1_Click;
             // 
             // btr
             // 
@@ -262,6 +274,7 @@
             btr.TabIndex = 22;
             btr.Text = "=";
             btr.UseVisualStyleBackColor = true;
+            btr.Click += btr_Click;
             // 
             // bt0
             // 
@@ -273,6 +286,7 @@
             bt0.TabIndex = 21;
             bt0.Text = "0";
             bt0.UseVisualStyleBackColor = true;
+            bt0.Click += bt0_Click;
             // 
             // btd
             // 
