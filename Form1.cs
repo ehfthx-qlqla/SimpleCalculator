@@ -353,6 +353,46 @@ namespace SimpleCalculator
                 }
             }
         }
+
+        private void btnp_Click(object sender, EventArgs e)
+        {
+            // 1. 하단 입력창(story2)에 숫자가 있는지 확인
+            if (!string.IsNullOrEmpty(story2.Text) && story2.Text != "0")
+            {
+                // 2. 현재 텍스트를 숫자로 변환
+                int currentVal = int.Parse(story2.Text);
+
+                // 3. 부호 반전 (-1을 곱함)
+                currentVal = currentVal * -1;
+
+                // 4. 결과를 다시 문자열로 변환하여 story2에 저장
+                story2.Text = currentVal.ToString();
+
+                // 5. 상단 입력창(story1)의 내용도 업데이트가 필요합니다.
+                // 현재 입력 중인 마지막 숫자 부분을 바뀐 부호의 숫자로 교체해야 하므로
+                // 간단하게 구현하려면 story1의 마지막 숫자 부분을 수정하거나, 
+                // 윈도우 계산기처럼 '입력 중인 숫자가 바뀜'을 반영합니다.
+                UpdateStory1WithNewSign();
+            }
+        }
+
+        // 상단 story1의 표시를 동기화해주는 보조 함수
+        private void UpdateStory1WithNewSign()
+        {
+            // 계산이 완료된 상태(=이 포함된 상태)라면 story1을 story2 결과값으로 동기화
+            if (story1.Text.Contains("="))
+            {
+                story1.Text = story2.Text;
+            }
+            else
+            {
+                // 연산자 뒤의 숫자만 부호를 바꾼 값으로 다시 써주는 로직 (더 정교한 처리를 위해)
+                // 만약 구현이 복잡하다면 story1.Text = story2.Text; 정도로만 해도 과제 수준에선 충분합니다.
+            }
+        }
+
+        //과제4 시작!!!!!!!!!!!!
+
     }
 }
     

@@ -312,6 +312,7 @@
             btnp.TabIndex = 19;
             btnp.Text = "+/-";
             btnp.UseVisualStyleBackColor = true;
+            btnp.Click += btnp_Click;
             // 
             // lbError
             // 
