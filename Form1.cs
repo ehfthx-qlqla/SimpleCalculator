@@ -233,17 +233,23 @@ namespace SimpleCalculator
         // 초기화 버튼 (btC 또는 btCE) 클릭 시
         private void btCE_Click(object sender, EventArgs e)
         {
-            // 현재 입력창(story2)에 글자가 있다면
-            if (story2.Text.Length > 0)
+            // 1. 계산 결과가 이미 나온 상태인지 확인 (story1에 '='이 포함되어 있다면)
+            if (story1.Text.Contains("="))
             {
-                // 상단 기록(story1)에서도 story2의 길이만큼 뒤에서부터 지워줍니다.
+                // 이때는 C 버튼과 동일하게 전체 초기화 진행
+                btC_Click(sender, e);
+            }
+            // 2. 아직 계산 중(입력 중)인 상태라면
+            else if (story2.Text.Length > 0)
+            {
+                // 상단 기록(story1)에서 현재 story2에 적힌 숫자만큼만 뒤에서 제거
                 int lengthToRemove = story2.Text.Length;
                 if (story1.Text.Length >= lengthToRemove)
                 {
                     story1.Text = story1.Text.Substring(0, story1.Text.Length - lengthToRemove);
                 }
 
-                // 현재 입력창을 비웁니다.
+                // 하단 입력창만 비움
                 story2.Clear();
             }
         }
