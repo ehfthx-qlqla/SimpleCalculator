@@ -15,6 +15,8 @@ namespace SimpleCalculator
         // 숫자 버튼 (bt0 ~ bt9) 클릭 시 공통 연결할 이벤트
         private void bt1_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             Button btn = (Button)sender;
 
             // 연산자(+)를 누른 직후라면 story2를 비우고 새로 입력
@@ -32,6 +34,8 @@ namespace SimpleCalculator
         }
         private void bt2_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             Button btn = (Button)sender;
 
             // 연산자(+)를 누른 직후라면 story2를 비우고 새로 입력
@@ -49,6 +53,8 @@ namespace SimpleCalculator
         }
         private void bt3_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             Button btn = (Button)sender;
 
             // 연산자(+)를 누른 직후라면 story2를 비우고 새로 입력
@@ -67,10 +73,14 @@ namespace SimpleCalculator
         // 더하기 버튼 (btp) 클릭 시
         private void btp_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             SetOperator("+");
         }
         private void bt4_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             Button btn = (Button)sender;
 
             // 연산자(+)를 누른 직후라면 story2를 비우고 새로 입력
@@ -88,6 +98,8 @@ namespace SimpleCalculator
         }
         private void bt5_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             Button btn = (Button)sender;
 
             // 연산자(+)를 누른 직후라면 story2를 비우고 새로 입력
@@ -105,6 +117,8 @@ namespace SimpleCalculator
         }
         private void bt6_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             Button btn = (Button)sender;
 
             // 연산자(+)를 누른 직후라면 story2를 비우고 새로 입력
@@ -122,6 +136,8 @@ namespace SimpleCalculator
         }
         private void bt7_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             Button btn = (Button)sender;
 
             // 연산자(+)를 누른 직후라면 story2를 비우고 새로 입력
@@ -139,6 +155,8 @@ namespace SimpleCalculator
         }
         private void bt8_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             Button btn = (Button)sender;
 
             // 연산자(+)를 누른 직후라면 story2를 비우고 새로 입력
@@ -156,6 +174,8 @@ namespace SimpleCalculator
         }
         private void bt9_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             Button btn = (Button)sender;
 
             // 연산자(+)를 누른 직후라면 story2를 비우고 새로 입력
@@ -173,6 +193,8 @@ namespace SimpleCalculator
         }
         private void bt0_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             Button btn = (Button)sender;
 
             // 연산자(+)를 누른 직후라면 story2를 비우고 새로 입력
@@ -191,8 +213,13 @@ namespace SimpleCalculator
         // 결과 버튼 (btr) 클릭 시
         private void btr_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             if (!string.IsNullOrEmpty(story2.Text) && currentOperator != "")
             {
+                // 계산 시작 전 일단 에러 메시지를 숨깁니다.
+                lbError.Visible = false;
+
                 secondOperand = int.Parse(story2.Text);
                 int result = 0;
 
@@ -202,8 +229,17 @@ namespace SimpleCalculator
                     case "-": result = firstOperand - secondOperand; break;
                     case "*": result = firstOperand * secondOperand; break;
                     case "/":
-                        if (secondOperand != 0) result = firstOperand / secondOperand;
-                        else { MessageBox.Show("0으로 나눌 수 없습니다."); return; }
+                        // 0으로 나누기 체크
+                        if (secondOperand != 0)
+                        {
+                            result = firstOperand / secondOperand;
+                        }
+                        else
+                        {
+                            // 팝업 대신 빨간 라벨을 보여줍니다.
+                            lbError.Visible = true;
+                            return; // 계산을 중단하고 나갑니다.
+                        }
                         break;
                 }
 
@@ -223,6 +259,8 @@ namespace SimpleCalculator
         }
         private void btC_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             story1.Clear();           // 상단 기록 삭제
             story2.Clear();           // 하단 입력 삭제
             firstOperand = 0;         // 첫 번째 숫자 초기화
@@ -233,6 +271,8 @@ namespace SimpleCalculator
         // 초기화 버튼 (btC 또는 btCE) 클릭 시
         private void btCE_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             // 1. 계산 결과가 이미 나온 상태인지 확인 (story1에 '='이 포함되어 있다면)
             if (story1.Text.Contains("="))
             {
@@ -257,16 +297,22 @@ namespace SimpleCalculator
         //과제2 시작!!!!!!!!!!!!!!!!!!!!
         private void btn_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             SetOperator("-");
         }
 
         private void btt_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             SetOperator("*");
         }
 
         private void btdv_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             SetOperator("/");
         }
 
@@ -292,6 +338,8 @@ namespace SimpleCalculator
         //과제3 시작!!!!!!!!!!!!!!!!!!!!!!!!!!
         private void btdel_Click(object sender, EventArgs e)
         {
+            lbError.Visible = false;
+
             // story2에 지울 글자가 있을 때만 실행
             if (story2.Text.Length > 0)
             {
